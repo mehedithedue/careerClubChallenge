@@ -32,9 +32,14 @@
             height: auto;
             bottom: 115px;
         }
-        
         .relative{
             position: relative;
+        }
+        .win{
+            background: #881512 !important;
+            color: #fff !important;
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -62,39 +67,39 @@
                     <div class="col-md-6 text-center player1">
                         <div class="row">
                             <h2>Player 1 </h2>
-                            <span class="label label-danger">&nbsp;&nbsp;</span>
-                            <h1 class="big-text text-danger">0</h1>
+                            <span id="player1-active" class="label">&nbsp;&nbsp;</span>
+                            <h1 id="player1-global-score" class="big-text text-danger"></h1>
                         </div>
                         <div class="row current-row">
                             <div class="current-score col-md-4 col-md-offset-4">
                                 <p>Current</p>
-                                <h1>0</h1>
+                                <h1 id="player1-round-score"></h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 text-center player2">
                         <div class="row">
                             <h2>Player 2</h2>
-                            <span class="label label-danger">&nbsp;&nbsp;</span>
-                            <h1 class="big-text text-danger">1</h1>
+                            <span id="player2-active" class="label">&nbsp;&nbsp;</span>
+                            <h1 id="player2-global-score" class="big-text text-danger"></h1>
                         </div>
                         <div class="row current-row">
                                 <div class="current-score col-md-4 col-md-offset-4">
                                     <p>Current</p>
-                                    <h1>0</h1>
+                                    <h1 id="player2-round-score" ></h1>
                                 </div>
                             </div>
                     </div>
                 </div>
 
                 <div class="absolute text-center">
-                    <p><button class="btn btn-default">ROLL DICE</button></p>
-                    <p><button class="btn btn-default">HOLD</button></p>
+                    <p><button id="roll-dice" class="btn btn-default">ROLL DICE</button></p>
+                    <p><button id="hold" class="btn btn-default">HOLD</button></p>
                 </div>
 
                 <div class="row text-center">
                     <div class="col-md-4 col-md-offset-4">
-                        <h4 class="form-control">FINAL SCORE</h4>
+                        <h4 id="final-score" class="form-control">FINAL SCORE</h4>
                     </div>
                 </div>
             </div>
@@ -104,7 +109,141 @@
 
     <script>
 
-       
+        var player1 = {};
+        player1.roundScore = 0;
+        player1.globalScore = 0;
+        player1.active = false;
+
+        var player2 = {};
+        player2.roundScore = 0;
+        player2.globalScore = 0;
+        player1.active = true;
+
+        
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function switchPlayer(){
+            if(player1.active){
+
+                document.getElementById('player1-active').classList.add("label-danger");
+                document.getElementById('player2-active').classList.remove("label-danger");
+            }else{
+
+                document.getElementById('player2-active').classList.add("label-danger");
+                document.getElementById('player1-active').classList.remove("label-danger");
+                
+            }
+        }
+
+        function showHtmlElement(){
+
+            document.getElementById('player1-round-score').innerHTML = player1.roundScore;
+            document.getElementById('player2-round-score').innerHTML = player2.roundScore;
+
+            document.getElementById('player1-global-score').innerHTML = player1.globalScore;
+            document.getElementById('player2-global-score').innerHTML = player2.globalScore;
+        }
+
+        function gameReset(){
+            player1.roundScore = 0;
+            player1.globalScore = 0;
+            player1.active = false;
+            player2.roundScore = 0;
+            player2.globalScore = 0;
+            player1.active = true;
+        }
+
+        function checkWinner(){
+
+            if(player1.globalScore > 100){
+
+                document.querySelector("h4#final-score").classList.add("win");
+                document.querySelector("h4#final-score").innerHTML = 'Player 1 is won !'
+                gameReset();
+            }
+
+            if(player2.globalScore > 100){
+            
+                document.querySelector("h4#final-score").classList.add("win");
+                document.querySelector("h4#final-score").innerHTML = 'Player 2 is won !';
+                gameReset();
+                
+            }
+
+        }
+
+
+        function rollTheDice(){
+
+            if(player1.active){
+
+                player1.roundScore = getRandomInt(1, 6);
+
+                if(player1.roundScore !== 1){
+
+                    
+                    player1.globalScore = player1.globalScore + player1.roundScore 
+                }else{
+
+                    player1.globalScore = 0
+                    player1.active = false;
+                    player2.active = true;
+
+                    switchPlayer();
+                }
+
+            }else{
+
+                player2.roundScore = getRandomInt(1, 6);
+
+                if(player2.roundScore !== 1){
+
+                    
+                    player2.globalScore = player2.globalScore + player2.roundScore 
+                }else{
+
+                    player2.globalScore = 0
+                    player2.active = false;
+                    player1.active = true;
+
+                    switchPlayer();
+                }
+                
+            }
+            
+            showHtmlElement();
+            checkWinner();
+
+        }
+
+        function holdAndSwitch(){
+
+            if(player1.active){
+
+                player1.active = false;
+                player2.active = true;
+                
+            }else{
+
+                player2.active = false;
+                player1.active = true;
+            }
+
+            switchPlayer();
+
+        }
+
+        showHtmlElement();
+        switchPlayer();
+
+        document.querySelector("button#roll-dice").addEventListener("click", rollTheDice, false);
+
+        document.querySelector("button#hold").addEventListener("click", holdAndSwitch, false);
+        
 
     </script>
 </body>
