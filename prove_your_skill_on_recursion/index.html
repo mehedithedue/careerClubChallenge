@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Careerclub | Prove your skill on Recursion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <h2 class="text-center">Prove your skill on Recursion using JavaScript2</h2>
+                <hr>
+                <h4><a href="https://careerclub.net/index.php/challenge/1/Prove+your+skill+on+Recursion+using+JavaScript"> Challange Link from careerclub.net</a> </h4>
+                <p>Using the JavaScript language, have the function FirstFactorial(num) take the num parameter being passed and return the factorial of it (e.g. if num = 4, return (4 * 3 * 2 * 1)). For the test cases, the range will be between 1 and 18 and the input will always be an int</p>
+                <p>Sample Test Cases</p>
+                <p>Input:4 Output:24</p>
+                <p>Input:8 Output:40320</p>
+                <hr>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="inputNumber" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <button id="calculateRecursion" class="btn btn-default">Calculate Recursion</button>
+                       </div>
+                    </div>
+                    
+                    <h4>Result : <span id="recursionResult"></span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    
+    function firstFactorial(num){
+
+        if(num == 1){
+            return 1;
+            
+        }
+
+        return num * firstFactorial(num -1)
+    }
+
+
+
+    function showResult(){
+
+        var inputValue = document.querySelector('input#inputNumber').value;
+
+        document.querySelector('span#recursionResult').innerHTML = firstFactorial(inputValue);
+    }
+
+    
+
+    document.getElementById("calculateRecursion").addEventListener("click", showResult, false);
+
+    </script>
+</body>
+</html>
