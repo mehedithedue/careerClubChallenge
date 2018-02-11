@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Careerclub | JavaScript Coding Challenge 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <style>
+        
+        .big-text {
+            font-size: 100px;
+        }
+
+        .current-score{
+            background: #d9534f;
+            color: #fff;
+            padding: 10px;
+        }
+        .current-row{
+            margin-top:80px !important;
+            padding-bottom:80px;
+        }
+        .final-score{
+            cursor: progress !important;
+        }
+        .absolute{
+            position: absolute;
+            width: 100%;
+            height: auto;
+            bottom: 115px;
+        }
+        
+        .relative{
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <h3 class="text-center">JavaScript Coding Challenge 3</h3>
+                <hr>
+                <h4>
+                    <a href="https://careerclub.net/index.php/challenge/8/JavaScript%2BCoding%2BChallenge%2B3"> Challange Link from careerclub.net</a>
+                </h4>
+                <h4>GAME RULES:</h4>
+                <p>- The game has 2 players, playing in rounds</p>
+                <p>- In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score</p>
+                <p>- BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn</p>
+                <p>- The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After
+                    that, it's the next player's turn</p>
+                <p>- The first player to reach 100 points on GLOBAL score wins the game</p>
+                <hr>
+                <div class="row relative">
+                    <div class="col-md-6 text-center player1">
+                        <div class="row">
+                            <h2>Player 1 </h2>
+                            <span class="label label-danger">&nbsp;&nbsp;</span>
+                            <h1 class="big-text text-danger">0</h1>
+                        </div>
+                        <div class="row current-row">
+                            <div class="current-score col-md-4 col-md-offset-4">
+                                <p>Current</p>
+                                <h1>0</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center player2">
+                        <div class="row">
+                            <h2>Player 2</h2>
+                            <span class="label label-danger">&nbsp;&nbsp;</span>
+                            <h1 class="big-text text-danger">1</h1>
+                        </div>
+                        <div class="row current-row">
+                                <div class="current-score col-md-4 col-md-offset-4">
+                                    <p>Current</p>
+                                    <h1>0</h1>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="absolute text-center">
+                    <p><button class="btn btn-default">ROLL DICE</button></p>
+                    <p><button class="btn btn-default">HOLD</button></p>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-4 col-md-offset-4">
+                        <h4 class="form-control">FINAL SCORE</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+       
+
+    </script>
+</body>
+
+</html>
