@@ -1,0 +1,31 @@
+.big-text {
+            font-size: 100px;
+        }
+
+        .current-score{
+            background: #d9534f;
+            color: #fff;
+            padding: 10px;
+        }
+        .current-row{
+            margin-top:80px !important;
+            padding-bottom:80px;
+        }
+        .final-score{
+            cursor: progress !important;
+        }
+        .absolute{
+            position: absolute;
+            width: 100%;
+            height: auto;
+            bottom: 115px;
+        }
+        .relative{
+            position: relative;
+        }
+        .win{
+            background: #881512 !important;
+            color: #fff !important;
+            font-size: 18px;
+            font-weight: bold;
+        }

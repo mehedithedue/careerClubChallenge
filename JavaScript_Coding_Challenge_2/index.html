@@ -21,39 +21,13 @@
                 <p>3.Use a loop to fill the array with the ages of the persons 4.Use another loop to log into the console whether each person is of full age (18 or older), as well as their age </p>
                 <p>5.Finally, create a function called printFullAge which receives the array of years as an argument, executes the steps 2., 3. and 4. and returns an array of true/false boolean values: true if the person is of full age (>= 18 years) and false if not (< 18 years)</p>
                 <p>6.Call the function with two different arrays and store the results in two variables: full_1 and full_2</p>
-                <p>Example input: [1965, 2008, 1992] Example output: [true, false, true] Hint: you can use a loop not only to read from an array, like y[i] but also to set values in an array, like y[i]=. .. You can also use the specific array methods.</p>
-                <h4>Please look the solution in the console</h4>
+                <p>The input is javscript array [1987, 1985, 1967, 1972, 2001, 1982] and [1957, 1930, 2005, 1992, 1991, 2003]</p>
+				<hr>
+				<h4>Please look the solution in the console</h4>
             </div>
         </div>
     </div>
     
-    <script>
-    
-    function printFullAge(personArray){
-        var ageArray = [];
-        var resultBoolArr = [];
-        var i = 0;
-        var thisYear = new Date().getFullYear();
-        personArray.forEach(function(birthYear) {
-            ageArray[i++] = thisYear - birthYear;
-        });
-       var j = 0;
-       ageArray.forEach(function( singleAge) {
-           resultBoolArr[j++] = (singleAge >= 18) ? true : false;
-       });
-
-       return resultBoolArr;
-    };
-
-    var personYearArr1 = [1987, 1985, 1967, 1972, 2001, 1982];
-    var personYearArr2 = [1957, 1930, 2005, 1992, 1991, 2003];
-
-    var full_1 = printFullAge(personYearArr1);    
-    var full_2 = printFullAge(personYearArr2);
-    
-    console.log(full_1);
-    console.log(full_2);
-
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
